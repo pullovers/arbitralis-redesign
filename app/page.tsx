@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 type Segment = "imobiliarias" | "escritorios";
 type IconName =
@@ -221,6 +221,34 @@ export default function Home() {
   const [claimValue, setClaimValue] = useState(80000);
   const [stateFee, setStateFee] = useState(1500);
 
+  useEffect(() => {
+    const elements = Array.from(
+      document.querySelectorAll<HTMLElement>("[data-reveal]"),
+    );
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    if (reducedMotion || !("IntersectionObserver" in window)) {
+      elements.forEach((element) => element.classList.add("is-visible"));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -7% 0px" },
+    );
+
+    elements.forEach((element) => observer.observe(element));
+    return () => observer.disconnect();
+  }, []);
+
   const estimate = useMemo(() => {
     const traditional = Math.round(stateFee + claimValue * 0.18);
     const arbitration = Math.round(1100 + claimValue * 0.04);
@@ -253,7 +281,7 @@ export default function Home() {
           <div className="hero-glow hero-glow-one" />
           <div className="hero-glow hero-glow-two" />
           <div className="container hero-grid">
-            <div className="hero-copy">
+            <div className="hero-copy hero-enter hero-enter-copy">
               <span className="eyebrow"><span className="eyebrow-dot" /> Arbitragem digital para empresas</span>
               <h1 id="hero-title">
                 Resolva conflitos imobiliários e contratuais com mais <em>rapidez e previsibilidade.</em>
@@ -271,7 +299,7 @@ export default function Home() {
               </ul>
             </div>
 
-            <div className="hero-visual" aria-label="Representação da plataforma Arbitralis">
+            <div className="hero-visual hero-enter hero-enter-visual" aria-label="Representação da plataforma Arbitralis">
               <div className="dashboard-card">
                 <div className="dashboard-top">
                   <div>
@@ -310,7 +338,7 @@ export default function Home() {
         </section>
 
         <section className="proof-strip" aria-label="Resultados e diferenciais">
-          <div className="container proof-grid">
+          <div className="container proof-grid" data-reveal>
             <div className="proof-item"><strong>+10 mil</strong><span>processos resolvidos</span></div>
             <div className="proof-divider" />
             <div className="proof-item"><strong>100%</strong><span>digital, do início ao fim</span></div>
@@ -322,7 +350,7 @@ export default function Home() {
         </section>
 
         <section className="section audience-section" id="solucoes">
-          <div className="container">
+          <div className="container" data-reveal>
             <div className="section-heading centered">
               <span className="eyebrow">Soluções para sua operação</span>
               <h2>Como a Arbitralis pode ajudar o seu negócio?</h2>
@@ -369,7 +397,7 @@ export default function Home() {
         </section>
 
         <section className="section comparison-section">
-          <div className="container comparison-grid">
+          <div className="container comparison-grid" data-reveal>
             <div className="comparison-copy">
               <span className="eyebrow eyebrow-dark">Uma alternativa ao processo tradicional</span>
               <h2>Seu jurídico precisa de soluções no tempo do seu negócio.</h2>
@@ -397,7 +425,7 @@ export default function Home() {
         </section>
 
         <section className="section process-section" id="como-funciona">
-          <div className="container">
+          <div className="container" data-reveal>
             <div className="section-heading centered compact">
               <span className="eyebrow">Do contrato à resolução</span>
               <h2>Um caminho mais simples para conflitos complexos.</h2>
@@ -430,7 +458,7 @@ export default function Home() {
         </section>
 
         <section className="section calculator-section" id="simulador">
-          <div className="container calculator-grid">
+          <div className="container calculator-grid" data-reveal>
             <div className="calculator-copy">
               <span className="eyebrow">Simulador de custos jurídicos</span>
               <h2>Visualize o impacto de escolher um caminho mais eficiente.</h2>
@@ -467,7 +495,7 @@ export default function Home() {
         </section>
 
         <section className="section authority-section">
-          <div className="container">
+          <div className="container" data-reveal>
             <div className="authority-card">
               <div className="authority-content">
                 <span className="eyebrow eyebrow-dark">Confiança para decidir melhor</span>
@@ -490,7 +518,7 @@ export default function Home() {
         </section>
 
         <section className="section faq-section" id="faq">
-          <div className="container faq-grid">
+          <div className="container faq-grid" data-reveal>
             <div className="faq-copy">
               <span className="eyebrow">Perguntas frequentes</span>
               <h2>Segurança começa com informação clara.</h2>
@@ -511,7 +539,7 @@ export default function Home() {
         <section className="final-cta" id="contato">
           <div className="cta-decoration cta-decoration-one" />
           <div className="cta-decoration cta-decoration-two" />
-          <div className="container final-cta-inner">
+          <div className="container final-cta-inner" data-reveal>
             <span className="eyebrow eyebrow-dark">Próximo passo</span>
             <h2>Seus contratos já estão preparados para resolver conflitos com mais previsibilidade?</h2>
             <p>Converse com um especialista e entenda como implementar a cláusula arbitral na sua operação.</p>
@@ -524,7 +552,7 @@ export default function Home() {
       </main>
 
       <footer className="site-footer">
-        <div className="container footer-grid">
+        <div className="container footer-grid" data-reveal>
           <div className="footer-brand"><Logo inverse /><p>Tecnologia a serviço da justiça. Resolução de conflitos ágil e definitiva com arbitragem digital.</p></div>
           <div><strong>Arbitralis</strong><a href="#solucoes">Soluções</a><a href="#como-funciona">Como funciona</a><a href="#simulador">Simulador</a></div>
           <div><strong>Documentos</strong><a href="https://www.arbitralis.com.br/como-implementar">Como implementar</a><a href="https://www.arbitralis.com.br/regulamentos">Regulamentos</a><a href="https://plataforma.arbitralis.com.br/">Validar documento</a></div>
