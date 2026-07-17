@@ -394,6 +394,19 @@ export default function Home() {
                 ))}
               </div>
             </div>
+
+            <figure className="audience-photo" data-reveal>
+              <div className="audience-photo-copy">
+                <span><Icon name="users" size={17} /> Relações comerciais importam</span>
+                <strong>Conflitos bem conduzidos ajudam a preservar parcerias.</strong>
+                <p>Um procedimento claro reduz ruídos e permite que equipes, clientes e parceiros sigam em frente com mais segurança.</p>
+              </div>
+              <figcaption>
+                <a href="https://unsplash.com/photos/diverse-business-team-collaborating-in-a-modern-office-_4tpElFQemQ" target="_blank" rel="noreferrer">
+                  Foto: Vitaly Gariev / Unsplash
+                </a>
+              </figcaption>
+            </figure>
           </div>
         </section>
 
