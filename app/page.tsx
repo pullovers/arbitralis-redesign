@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useMemo, useState } from "react";
 
 type Segment = "imobiliarias" | "escritorios";
@@ -195,11 +196,14 @@ function Icon({ name, size = 22 }: { name: IconName; size?: number }) {
 function Logo({ inverse = false }: { inverse?: boolean }) {
   return (
     <a className={`logo ${inverse ? "logo-inverse" : ""}`} href="#top" aria-label="Arbitralis — início">
-      <span className="logo-mark" aria-hidden="true"><span /></span>
-      <span className="logo-copy">
-        <strong>Arbitralis</strong>
-        <small>câmara arbitral</small>
-      </span>
+      <Image
+        className="brand-logo"
+        src="/logo-arbitralis.svg"
+        alt="Arbitralis — Câmara de Arbitragem"
+        width={353}
+        height={90}
+        priority
+      />
     </a>
   );
 }
