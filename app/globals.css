@@ -2022,3 +2022,52 @@ a:focus-visible {
   }
 }
 
+/* Independent floating motion for the hero status cards */
+.float-card {
+  --float-x: 1px;
+  --float-y: -6px;
+  --float-rotate: -0.25deg;
+  animation: card-float 5.8s ease-in-out infinite;
+  will-change: transform;
+}
+
+.float-security {
+  --float-x: -1px;
+  --float-y: -7px;
+  --float-rotate: 0.25deg;
+  animation-duration: 6.6s;
+  animation-delay: -2.1s;
+}
+
+@keyframes card-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0);
+  }
+
+  50% {
+    transform:
+      translate3d(var(--float-x), var(--float-y), 0)
+      rotate(var(--float-rotate));
+  }
+}
+
+@media (max-width: 768px) {
+  .float-time {
+    --float-x: 2px;
+    --float-y: -9px;
+  }
+
+  .float-security {
+    --float-x: -2px;
+    --float-y: -10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .float-card {
+    animation: none;
+    will-change: auto;
+  }
+}
+
