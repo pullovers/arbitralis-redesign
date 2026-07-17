@@ -2,9 +2,6 @@
   "name": "arbitralis-imobiliarias",
   "version": "0.1.0",
   "private": true,
-  "engines": {
-    "node": "22.x"
-  },
   "scripts": {
     "install:ci": "bash scripts/install-ci.sh",
     "dev": "next dev",
