@@ -282,7 +282,7 @@ export default function Home() {
           <div className="hero-glow hero-glow-two" />
           <div className="container hero-grid">
             <div className="hero-copy hero-enter hero-enter-copy">
-              <span className="eyebrow"><span className="eyebrow-dot" /> Arbitragem digital para empresas</span>
+              <span className="eyebrow"><span className="eyebrow-dot" /> Para imobiliárias e escritórios de advocacia</span>
               <h1 id="hero-title">
                 Resolva conflitos imobiliários e contratuais com mais <em>rapidez e previsibilidade.</em>
               </h1>
@@ -507,11 +507,13 @@ export default function Home() {
                   <span><Icon name="laptop" size={18} /> Acompanhamento online</span>
                 </div>
               </div>
-              <div className="authority-quote">
-                <span className="quote-mark">“</span>
-                <blockquote>Meios alternativos de solução de conflitos ajudam empresas a buscar respostas mais adequadas ao ritmo de suas operações.</blockquote>
-                <div className="quote-person"><span>AG</span><div><strong>Autoridade e governança</strong><small>Princípio institucional da solução</small></div></div>
-              </div>
+              <figure className="authority-media">
+                <figcaption>
+                  <span><Icon name="users" size={17} /> Suporte em cada etapa</span>
+                  <strong>Tecnologia com acompanhamento humano.</strong>
+                  <a href="https://unsplash.com/photos/business-professionals-collaborating-in-a-modern-office-meeting-7Nu4atuZN1U" target="_blank" rel="noreferrer">Foto: Vitaly Gariev / Unsplash</a>
+                </figcaption>
+              </figure>
             </div>
             <div className="logo-cloud"><span>Reconhecida e presente em</span><div><strong>SECOVI-SP</strong><strong>SKEMA</strong><strong>Apólice</strong><strong>Valor Econômico</strong></div></div>
           </div>
