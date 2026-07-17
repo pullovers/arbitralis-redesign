@@ -515,7 +515,15 @@ export default function Home() {
                 </figcaption>
               </figure>
             </div>
-            <div className="logo-cloud"><span>Reconhecida e presente em</span><div><strong>SECOVI-SP</strong><strong>SKEMA</strong><strong>Apólice</strong><strong>Valor Econômico</strong></div></div>
+            <div className="logo-cloud">
+              <span>Reconhecida e presente em</span>
+              <div className="trust-logos" aria-label="Marcas e veículos relacionados à Arbitralis">
+                <Image className="trust-logo trust-logo-secovi" src="/logo-secovi.svg" alt="SECOVI-SP" width={447} height={118} />
+                <Image className="trust-logo trust-logo-valor" src="/logo-valor-economico.svg" alt="Valor Econômico" width={569} height={200} />
+                <Image className="trust-logo trust-logo-lide" src="/logo-revista-lide.svg" alt="Revista LIDE" width={525} height={119} />
+                <Image className="trust-logo trust-logo-apolice" src="/logo-apolice.svg" alt="Apólice" width={1920} height={496} />
+              </div>
+            </div>
           </div>
         </section>
 
