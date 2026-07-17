@@ -220,6 +220,7 @@ export default function Home() {
   const [segment, setSegment] = useState<Segment>("imobiliarias");
   const [claimValue, setClaimValue] = useState(80000);
   const [stateFee, setStateFee] = useState(1500);
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   useEffect(() => {
     const elements = Array.from(
@@ -537,7 +538,16 @@ export default function Home() {
             </div>
             <div className="accordion-list">
               {faqs.map((faq, index) => (
-                <details key={faq.question} open={index === 0}>
+                <details
+                key={faq.question}
+                open={openFaq === index}
+                onToggle={(event) => {
+                  const isOpen = event.currentTarget.open;
+                  setOpenFaq((current) =>
+                    isOpen ? index : current === index ? null : current,
+                  );
+                }}
+              >
                   <summary><span>{faq.question}</span><i aria-hidden="true">+</i></summary>
                   <p>{faq.answer}</p>
                 </details>
