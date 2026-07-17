@@ -537,21 +537,44 @@ export default function Home() {
               <a className="text-link" href="#contato">Ainda tenho uma dúvida <Icon name="arrow" size={17} /></a>
             </div>
             <div className="accordion-list">
-              {faqs.map((faq, index) => (
-                <details
-                key={faq.question}
-                open={openFaq === index}
-                onToggle={(event) => {
-                  const isOpen = event.currentTarget.open;
-                  setOpenFaq((current) =>
-                    isOpen ? index : current === index ? null : current,
-                  );
-                }}
-              >
-                  <summary><span>{faq.question}</span><i aria-hidden="true">+</i></summary>
-                  <p>{faq.answer}</p>
-                </details>
-              ))}
+              {faqs.map((faq, index) => {
+                const isOpen = openFaq === index;
+                const triggerId = `faq-trigger-${index}`;
+                const panelId = `faq-panel-${index}`;
+
+                return (
+                  <div
+                    className={`faq-item ${isOpen ? "is-open" : ""}`}
+                    key={faq.question}
+                  >
+                    <button
+                      className="faq-trigger"
+                      id={triggerId}
+                      type="button"
+                      aria-expanded={isOpen}
+                      aria-controls={panelId}
+                      onClick={() =>
+                        setOpenFaq((current) =>
+                          current === index ? null : index,
+                        )
+                      }
+                    >
+                      <span>{faq.question}</span>
+                      <i aria-hidden="true">+</i>
+                    </button>
+                    <div
+                      className="faq-answer"
+                      id={panelId}
+                      role="region"
+                      aria-labelledby={triggerId}
+                    >
+                      <div className="faq-answer-inner">
+                        <p>{faq.answer}</p>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </section>
