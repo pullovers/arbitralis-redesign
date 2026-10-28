@@ -435,16 +435,6 @@ a:focus-visible {
   gap: 12px;
 }
 
-.timeline::before {
-  position: absolute;
-  top: 35px;
-  bottom: 35px;
-  left: 18px;
-  width: 1px;
-  background: rgba(255, 255, 255, 0.13);
-  content: "";
-}
-
 .timeline-item {
   position: relative;
   display: grid;
